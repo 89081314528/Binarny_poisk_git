@@ -20,15 +20,16 @@ public class Main {
         list.add(11);
         list.add(11);
         System.out.println(list);
+        System.out.println(isNumberInList(6, list));
         System.out.println(isNumberInList(11, list));
-    }
+        }
     public static int isNumberInList(int guessedNumber, List<Integer> list) {
         int lowerBorder = 0;
         int upperBorder = list.size() -1;
         if ((guessedNumber > list.get(upperBorder)) || (guessedNumber < list.get(lowerBorder))) {
             return -1;
         }
-        for (int i = 0; i < list.size() -1; i++) {
+        while (true) {
             if (guessedNumber == list.get(upperBorder)) {
                 return upperBorder;
             }
@@ -51,7 +52,7 @@ public class Main {
             }
         }
         // ????? не понимаю, зачем тут писать -1, но без нее не работает
-        return -1;
+//        return -1;
     }
 }
 
