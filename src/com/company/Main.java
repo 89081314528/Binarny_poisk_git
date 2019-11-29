@@ -8,7 +8,6 @@ import java.util.List;
  * написать метод, который принимает лист и целое число
  * если число есть в листе, метод должен вернуть его индекс
  * если нет, то вернуть минус 1
- * ????????вернуть первый встретившийся индекс? если будет два одинаковых числа в листе?
  */
 public class Main {
 
@@ -19,9 +18,9 @@ public class Main {
         }
         list.add(11);
         list.add(11);
+        list.add(11);
         System.out.println(list);
-        System.out.println(isNumberInList(6, list));
-        System.out.println(isNumberInList(11, list));
+        System.out.println(isNumberInList(15, list));
         }
     public static int isNumberInList(int guessedNumber, List<Integer> list) {
         int lowerBorder = 0;
@@ -30,9 +29,6 @@ public class Main {
             return -1;
         }
         while (true) {
-            if (guessedNumber == list.get(upperBorder)) {
-                return upperBorder;
-            }
             if (guessedNumber == list.get(lowerBorder)) {
                 return lowerBorder;
             }
@@ -40,19 +36,22 @@ public class Main {
                 System.out.println("середина " + index);
             if (list.get(index) == guessedNumber) {
                 return index;
-            } else if (list.get(index) > guessedNumber) {
+            }
+            if (list.get(index) > guessedNumber) {
                 upperBorder = index;
                 System.out.println("верхняя граница " + upperBorder);
-            } else if (list.get(index) < guessedNumber) {
+            }
+            if (list.get(index) < guessedNumber) {
                 lowerBorder = index;
                 System.out.println("нижняя граница " + lowerBorder);
+            }
+            if ((upperBorder - lowerBorder == 1) && (guessedNumber == list.get(upperBorder))) {
+                return upperBorder;
             }
             if (upperBorder - lowerBorder == 1) {
                 return -1;
             }
         }
-        // ????? не понимаю, зачем тут писать -1, но без нее не работает
-//        return -1;
     }
 }
 
